@@ -13,7 +13,7 @@ public class BasicAnnotations {
         System.out.println("This is my 1 testcase");
     }
 
-    @Test
+    @Test (groups = "smoke")
     public void secondTest() {
         System.out.println("This is my 2 testcase");
     }

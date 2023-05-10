@@ -54,7 +54,7 @@ public class SoftAssertion {
         System.out.println("i am test for login under smoke");
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod
         public void closeBrowser(){
         driver.quit();
     }
