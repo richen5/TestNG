@@ -23,7 +23,7 @@ public class LoginTest {
     @Test(groups = "regression")
     public void VerifyCredentials() {
 
-        SoftAssert soft=new SoftAssert();
+        SoftAssert soft = new SoftAssert();
 
         String expectedText = "Invalid credentials";
         WebElement Username = driver.findElement(By.id("txtUsername"));
@@ -33,7 +33,7 @@ public class LoginTest {
         driver.findElement(By.id("btnLogin")).click();
         String text = driver.findElement(By.id("spanMessage")).getText();
 //assertion to make sure that the message is correct
-        soft.assertEquals(text,expectedText);
+        soft.assertEquals(text, expectedText);
 
 
 //        validate the diaplay is true or not
@@ -43,10 +43,36 @@ public class LoginTest {
 
 //        check all asseertions
         soft.assertAll();
-
     }
+
+
+    @Test(groups = "regression")
+    public void VerifyCredentials2 () {
+
+        SoftAssert soft = new SoftAssert();
+
+        String expectedText = "Invalid credentials";
+        WebElement Username = driver.findElement(By.id("txtUsername"));
+        boolean displayed = Username.isDisplayed();
+        Username.sendKeys("123456");
+        driver.findElement(By.id("txtPassword")).sendKeys("123456");
+        driver.findElement(By.id("btnLogin")).click();
+        String text = driver.findElement(By.id("spanMessage")).getText();
+//assertion to make sure that the message is correct
+        soft.assertEquals(text, expectedText);
+
+
+//       validate the display is true or not
+        System.out.println("hello world");
+        soft.assertTrue(displayed);
+
+
+//       check all assertions
+        soft.assertAll();
+        }
+
     @AfterMethod(alwaysRun = true)
-    public  void  CloseBrowser(){
+    public void CloseBrowser() {
         driver.quit();
     }
 }
